@@ -1,3 +1,4 @@
+setuptools
 setuptools>=70
 wheel
 dash==2.10.2

@@ -5,16 +5,13 @@ services:
     env: python
     plan: free
     buildCommand: pip install -r requirements.txt
-    startCommand: python app.py   # change this to your actual backend entry file
+    startCommand: python app.py   # change to your actual backend entry file
     envVars:
       - key: PYTHON_VERSION
         value: 3.10.13
 
-  # React frontend
-  - type: web
+  # React frontend as a static site
+  - type: static
     name: frontend
-    env: node
-    plan: free
     buildCommand: npm install && npm run build
-    startCommand: npx serve -s build
     staticPublishPath: build

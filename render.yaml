@@ -1,9 +1,20 @@
 services:
+  # Python backend (FastAPI/Flask/Dash etc.)
   - type: web
-    name: maritime-weather-dashboard
+    name: backend
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python app.py   # change this to your actual backend entry file
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.13
+
+  # React frontend
+  - type: web
+    name: frontend
     env: node
     plan: free
-    branch: main
-    buildCommand: npm install --legacy-peer-deps && npm run build
-    startCommand: serve -s build
-    nodeVersion: 22
+    buildCommand: npm install && npm run build
+    startCommand: npx serve -s build
+    staticPublishPath: build

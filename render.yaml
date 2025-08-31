@@ -11,7 +11,7 @@ services:
         value: 3.10.13
 
   # React frontend as a static site
-  - type: static
+  - type: static_site
     name: frontend
     buildCommand: npm install && npm run build
     staticPublishPath: build
